@@ -1,0 +1,6 @@
+@AdoWebAPIStoreInventory_HostAddress = http://localhost:5274
+
+GET {{AdoWebAPIStoreInventory_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
