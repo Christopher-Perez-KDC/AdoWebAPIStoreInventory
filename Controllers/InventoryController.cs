@@ -27,7 +27,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             var inventoryModel = new InventoryModels
             {
                 Item = request.Item,
-                BrandName = request.BrandName,
+                Brand = request.BrandName,
                 CountOnHand = request.CountOnHand,
                 Location = request.Location,
                 Cost = request.Cost,
@@ -36,10 +36,21 @@ namespace AdoWebAPIStoreInventory.Controllers
             return new OkObjectResult(await _myRepository.Create(inventoryModel));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Update([FromRoute] UpdateInventoryRequest request)
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdateInventory([FromBody] UpdateInventoryRequest request)
         {
-
+            var inventoryModels = new InventoryModels
+            {
+                InventoryId = request.InventoryId,
+                Item = request.Item,
+                Brand = request.BrandName,
+                CountOnHand = request.CountOnHand,
+                Location = request.Location,
+                Cost = request.Cost
+            };
+            
+            var result = await _myRepository.Update(inventoryModels);
+            return Ok(result);
         }
 
 
