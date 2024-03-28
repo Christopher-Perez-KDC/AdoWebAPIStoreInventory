@@ -35,6 +35,14 @@ namespace AdoWebAPIStoreInventory.Controllers
 
             return new OkObjectResult(await _myRepository.Create(inventoryModel));
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Update([FromRoute] UpdateInventoryRequest request)
+        {
+
+        }
+
+
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] GetAllInventoryRequest getAllInventoryRequest)
         {
@@ -57,6 +65,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             var result = await _myRepository.Delete(request.InventoryId);
             return Ok(result);
         }    
+
     }
 }
 
