@@ -43,16 +43,20 @@ namespace AdoWebAPIStoreInventory.Controllers
             return Ok(result);
         }
         [HttpGet("{InventoryId}")]
-        public async Task<IActionResult> GetInventoriesById([FromQuery] GetInventoryByIDRequest getInventoryByID)
+        public async Task<IActionResult> GetInventoriesById([FromRoute] GetInventoryByIDRequest request)
         {
-            var result = getInventoryByID.InventoryId;
+
+
+            var result = await _myRepository.GetInventoryById(request.InventoryId);
             return Ok(result);
         }
+
         [HttpDelete]
-        public async Task<IActionResult> DeleteInventory([FromQuery] DeleteInventoryRequest request)
+        public async Task <IActionResult> DeleteInventory([FromQuery] DeleteInventoryRequest request)
         {
-            var result = DeleteInventory(request.InventoryId);
-        }
+            var result = await _myRepository.Delete(request.InventoryId);
+            return Ok(result);
+        }    
     }
 }
 
