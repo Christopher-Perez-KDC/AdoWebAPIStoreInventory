@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoWebAPIStoreInventory", "AdoWebAPIStoreInventory.csproj", "{636528C7-D2BB-4017-9D7D-E77DDECCEFA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoWebApiStoreInventory.Repositories", "..\AdoWebApiStoreInventory.Repositories\AdoWebApiStoreInventory.Repositories.csproj", "{4443E7EE-C0FF-42C8-9D50-664539ECC21A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{636528C7-D2BB-4017-9D7D-E77DDECCEFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{636528C7-D2BB-4017-9D7D-E77DDECCEFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{636528C7-D2BB-4017-9D7D-E77DDECCEFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4443E7EE-C0FF-42C8-9D50-664539ECC21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4443E7EE-C0FF-42C8-9D50-664539ECC21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4443E7EE-C0FF-42C8-9D50-664539ECC21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4443E7EE-C0FF-42C8-9D50-664539ECC21A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
