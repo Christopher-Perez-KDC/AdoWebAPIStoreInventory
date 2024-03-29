@@ -21,13 +21,13 @@ namespace AdoWebAPIStoreInventory.Controllers
             _myRepository = myRepository;
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateInventoryRequest request)
         {
             var inventoryModel = new InventoryModels
             {
                 Item = request.Item,
-                BrandName = request.BrandName,
+                Brand = request.BrandName,
                 CountOnHand = request.CountOnHand,
                 Location = request.Location,
                 Cost = request.Cost,
@@ -36,21 +36,32 @@ namespace AdoWebAPIStoreInventory.Controllers
             return new OkObjectResult(await _myRepository.Create(inventoryModel));
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Update([FromRoute] UpdateInventoryRequest request)
+        [HttpPost("Update")]
+        public async Task<IActionResult> UpdateInventory([FromBody] UpdateInventoryRequest request)
         {
-
+            var inventoryModels = new InventoryModels
+            {
+                InventoryId = request.InventoryId,
+                Item = request.Item,
+                Brand = request.BrandName,
+                CountOnHand = request.CountOnHand,
+                Location = request.Location,
+                Cost = request.Cost
+            };
+            
+            var result = await _myRepository.Update(inventoryModels);
+            return Ok(result);
         }
 
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllInventoryRequest getAllInventoryRequest)
         {
             var result = await _myRepository.GetAllInventories();
 
             return Ok(result);
         }
-        [HttpGet("{InventoryId}")]
+        [HttpGet("GetInventoryByID/{InventoryId}")]
         public async Task<IActionResult> GetInventoriesById([FromRoute] GetInventoryByIDRequest request)
         {
 
@@ -59,7 +70,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteID")]
         public async Task <IActionResult> DeleteInventory([FromQuery] DeleteInventoryRequest request)
         {
             var result = await _myRepository.Delete(request.InventoryId);
