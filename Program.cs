@@ -2,6 +2,17 @@ using AdoWebApiStoreInventory.Repositories.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:4200") // Angular app's URL
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,6 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors();
 app.UseAuthorization();
 
 app.MapControllers();

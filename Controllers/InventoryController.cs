@@ -21,7 +21,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             _myRepository = myRepository;
         }
 
-        [HttpPost]
+        [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateInventoryRequest request)
         {
             var inventoryModel = new InventoryModels
@@ -54,14 +54,14 @@ namespace AdoWebAPIStoreInventory.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll([FromQuery] GetAllInventoryRequest getAllInventoryRequest)
         {
             var result = await _myRepository.GetAllInventories();
 
             return Ok(result);
         }
-        [HttpGet("{InventoryId}")]
+        [HttpGet("GetInventoryByID/{InventoryId}")]
         public async Task<IActionResult> GetInventoriesById([FromRoute] GetInventoryByIDRequest request)
         {
 
@@ -70,7 +70,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
+        [HttpDelete("DeleteID")]
         public async Task <IActionResult> DeleteInventory([FromQuery] DeleteInventoryRequest request)
         {
             var result = await _myRepository.Delete(request.InventoryId);
