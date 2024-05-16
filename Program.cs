@@ -2,38 +2,40 @@ using AdoWebApiStoreInventory.Repositories.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Enable CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>
     {
-        builder.WithOrigins("http://localhost:4200") // Angular app's URL
+        builder.WithOrigins("http://localhost:4200")
                .AllowAnyHeader()
                .AllowAnyMethod();
     });
 });
 
-
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<InventoryRepository>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Ensure HTTPS redirection
 app.UseHttpsRedirection();
 
-app.UseCors();
+// Allow CORS
+app.UseCors(x => x.AllowAnyHeader()
+                   .AllowAnyMethod()
+                   .AllowAnyOrigin());
+
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

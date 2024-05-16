@@ -4,12 +4,13 @@ using AdoWebApiStoreInventory.Repositories.Models;
 using AdoWebAPIStoreInventory.RequestModels;
 using Microsoft.Extensions.Hosting;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdoWebAPIStoreInventory.Controllers
 {
 
-    [ApiController] // what does this do ?
-    [Route("[controller]")] // what does this do ?
+    [ApiController] 
+    [Route("Inventory")] 
     public class InventoryController : ControllerBase
     {
         private readonly ILogger<InventoryController> _logger;
@@ -54,8 +55,8 @@ namespace AdoWebAPIStoreInventory.Controllers
         }
 
 
-        [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll([FromQuery] GetAllInventoryRequest getAllInventoryRequest)
+        [HttpGet("GetAllInventory")]
+        public async Task<IActionResult> GetAll()
         {
             var result = await _myRepository.GetAllInventories();
 
@@ -80,5 +81,3 @@ namespace AdoWebAPIStoreInventory.Controllers
     }
 }
 
-
-// Rest swagge example 
