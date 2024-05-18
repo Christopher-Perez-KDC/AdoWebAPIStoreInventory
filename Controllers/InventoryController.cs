@@ -28,7 +28,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             var inventoryModel = new InventoryModels
             {
                 Item = request.Item,
-                Brand = request.BrandName,
+                Brand = request.Brand,
                 CountOnHand = request.CountOnHand,
                 Location = request.Location,
                 Cost = request.Cost,
@@ -44,7 +44,7 @@ namespace AdoWebAPIStoreInventory.Controllers
             {
                 InventoryId = request.InventoryId,
                 Item = request.Item,
-                Brand = request.BrandName,
+                Brand = request.Brand,
                 CountOnHand = request.CountOnHand,
                 Location = request.Location,
                 Cost = request.Cost
